@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 Route::get('/', 'AuthController@showFormLogin')->name('login');
 Route::get('login', 'AuthController@showFormLogin')->name('login');
 Route::post('login', 'AuthController@login');
@@ -29,8 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout')->name('logout');
  
 });
-=======
+
 Route::get('/', function () {
     return view('welcome');
 });
->>>>>>> 7bf721f0221cc09f95c4bddb8776b0941e44a98e
+
