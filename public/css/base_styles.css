@@ -1,0 +1,31 @@
+.navbar{
+    background-color: #bfdcae;
+    border: 0px;
+}
+
+.dropdown button{
+    height: 50px;
+    padding-right: 15px;
+    background-color: #bfdcae;
+    border: 0px;
+}
+
+.dropdown-menu{
+    background-color: #bfdcae;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.nav img{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-right{
+    margin-right: 0px;
+}
+
+#login, #register{
+    font-size: 13px;
+    font-family: monospace;
+}
