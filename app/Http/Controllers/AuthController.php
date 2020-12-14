@@ -5,61 +5,59 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
  
 use Illuminate\Support\Facades\Auth;
-use Validator;
-use Hash;
-use Session;
 use App\User;
- 
- 
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 class AuthController extends Controller
 {
     public function showFormLogin()
     {
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
-            //Login Success
-            return redirect()->route('home');
+            // login success
+            return redirect()->route('/');
         }
-        return view('login');
+        return view('login'); // login failed
     }
  
     public function login(Request $request)
     {
+
         $rules = [
             'email'                 => 'required|email',
             'password'              => 'required|string'
         ];
  
         $messages = [
-            'email.required'        => 'Email wajib diisi',
-            'email.email'           => 'Email tidak valid',
-            'password.required'     => 'Password wajib diisi',
-            'password.string'       => 'Password harus berupa string'
+            'email.required'        => 'Email must be filled',
+            'email.email'           => 'Email is not valid',
+            'password.required'     => 'Password must be filled',
+            'password.string'       => 'Password must be string'
         ];
  
         $validator = Validator::make($request->all(), $rules, $messages);
  
-        if($validator->fails()){
+        // throw message alert if the required inputs are not according to the rules
+        if($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
- 
+        
+        // get the inputs
         $data = [
             'email'     => $request->input('email'),
             'password'  => $request->input('password'),
         ];
  
-        Auth::attempt($data);
+        // check whether there is the user inside database
+        $result = Auth::attempt($data);
  
-        if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
-            //Login Success
-            return redirect()->route('home');
- 
-        } else { // false
- 
-            //Login Fail
-            Session::flash('error', 'Email atau password salah');
-            return redirect()->route('login');
+        if ($result){ 
+            // login success
+            $request->session()->keep(['email']); // keep email data
+            return redirect('/');
         }
- 
+        else return redirect()->back(); // login failed
+        
     }
  
     public function showFormRegister()
@@ -70,48 +68,43 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $rules = [
-            'name'                  => 'required|min:3|max:35',
+            'name'                  => 'required',
             'email'                 => 'required|email|unique:users,email',
-            'password'              => 'required|confirmed'
+            'password'              => 'required|confirmed|min:3'
         ];
  
         $messages = [
-            'name.required'         => 'Nama Lengkap wajib diisi',
-            'name.min'              => 'Nama lengkap minimal 3 karakter',
-            'name.max'              => 'Nama lengkap maksimal 35 karakter',
-            'email.required'        => 'Email wajib diisi',
-            'email.email'           => 'Email tidak valid',
-            'email.unique'          => 'Email sudah terdaftar',
-            'password.required'     => 'Password wajib diisi',
-            'password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
+            'name.required'         => 'Username must be filled',
+            'email.required'        => 'Email address must be filled',
+            'email.email'           => 'Email address is not valid',
+            'email.unique'          => 'Email address is already registered',
+            'password.required'     => 'Password must be filled',
+            'password.confirmed'    => 'Password is not the same as confirmed password',
+            'password.min'          => 'Password must not be less than 3 characters'
         ];
  
         $validator = Validator::make($request->all(), $rules, $messages);
  
-        if($validator->fails()){
+        // throw message alert if the required inputs are not according to the rules
+        if($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
  
         $user = new User;
-        $user->name = ucwords(strtolower($request->name));
+        $user->username = strtolower($request->name);
         $user->email = strtolower($request->email);
         $user->password = Hash::make($request->password);
         $user->email_verified_at = \Carbon\Carbon::now();
-        $simpan = $user->save();
+        $user->role = 'member';
+        $save = $user->save();
  
-        if($simpan){
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect()->route('login');
-        } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect()->route('register');
-        }
+        if($save) return redirect('/');
+        else return redirect()->back();
     }
  
     public function logout()
     {
         Auth::logout(); // menghapus session yang aktif
-        return redirect()->route('/');
+        return redirect('/');
     }
  
  

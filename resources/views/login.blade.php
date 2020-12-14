@@ -43,8 +43,8 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for=""><strong>Email</strong></label>
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <label for=""><strong>Email Address</strong></label>
+                        <input type="text" name="email" class="form-control" placeholder="Email Address">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>

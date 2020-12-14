@@ -13,23 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', 'Test@test');
-
+// home or view all shoes
+Route::get('/', 'ViewShoeController@viewAllShoe')->name('home');
+// login
 Route::get('/login', 'AuthController@showFormLogin')->name('login');
 Route::post('/login', 'AuthController@login');
+// register
 Route::get('/register', 'AuthController@showFormRegister')->name('register');
 Route::post('/register', 'AuthController@register');
- 
+//  routes that need middleware
 Route::group(['middleware' => 'auth'], function () {
  
-    Route::get('/home', 'HomeController@index')->name('home'); // nanti diganti ke /
+    // Route::get('/home', 'ViewShoeController@viewAllShoe')->name('home'); // nanti diganti ke /
     Route::get('/logout', 'AuthController@logout')->name('logout');
     // route pada dropdown di sini smua butuh middleware
+    // mungkin route nya ga usah dinamain... liat nanti lagi deh
 
 });
+// view shoe
+Route::get('/shoe={id}', 'ViewShoeController@viewShoe');
