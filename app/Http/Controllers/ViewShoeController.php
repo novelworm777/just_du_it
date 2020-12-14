@@ -41,7 +41,7 @@ class ViewShoeController extends Controller
 
         $shoe = Shoe::where('id', '=', "$id")->first();
 
-        return view('viewShoe', [
+        return view('viewShoeDetail', [
             'auth' => $auth,
             'role' => $role,
             'username' => $username,

@@ -61,14 +61,16 @@
                             </form>
                         </li>
                         @if ($auth)
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-link dropdown-toggle nav-username" aria-label="Left Align" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    {{ $username }}
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/logout') }}" id="logout">Logout</a></li>
-                                </ul>
-                            </div>
+                            <li>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-link dropdown-toggle nav-username" aria-label="Left Align" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        {{ $username }}
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ url('/logout') }}" id="logout">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         @else
                             <li><a class="navbar-brand" href="{{ url('/login') }}" id="login">Login</a></li>
                             <li><a class="navbar-brand" href="{{ url('/register') }}" id="register">Register</a></li>
