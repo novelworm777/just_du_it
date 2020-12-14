@@ -31,19 +31,19 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for=""><strong>Full Name</strong></label>
-                        <input type="text" name="name" class="form-control" placeholder="Full Name">
+                        <label for=""><strong>Username</strong></label>
+                        <input type="text" name="name" class="form-control" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <label for=""><strong>Email</strong></label>
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <label for=""><strong>Email Address</strong></label>
+                        <input type="text" name="email" class="form-control" placeholder="Email Address">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for=""><strong>Confirmation Password</strong></label>
+                        <label for=""><strong>Confirm Password</strong></label>
                         <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
                     </div>
                 </div>

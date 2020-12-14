@@ -1,0 +1,37 @@
+.page-header{
+    text-align: center;
+    font-family: 'Times New Roman';
+    color: #206a5d;
+}
+
+.col-sm-4{
+    margin-bottom: 37px;
+    font-family: 'Times New Roman';
+}
+
+#shoe-img{
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    margin-bottom: 13px;
+}
+
+.caption h3{
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+#paging{
+    text-align: center;
+    margin-top: -33px;
+    margin-bottom: 21px;
+}
+
+.pagination>li.active>span{
+    background-color: #81b214 !important;
+    border-color: #81b214 !important;
+}
+
+.pagination>li.page-item>a{
+    color: black;
+}
