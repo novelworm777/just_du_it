@@ -34,9 +34,12 @@ body{
     border: 0px;
 }
 
+.card-footer{
+    background-color: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    border: 0px;
+}
 button{
     background: -webkit-linear-gradient(bottom, #206a5d, #206a5d);
-    
 }
 button:hover{
     background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
