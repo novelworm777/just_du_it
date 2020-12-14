@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // home or view all shoes
-Route::get('/', 'ViewShoeController@viewAllShoe')->name('home');
+Route::get('/', 'ViewShoeController@viewAllShoe');
 // login
 Route::get('/login', 'AuthController@showFormLogin')->name('login');
 Route::post('/login', 'AuthController@login');
@@ -23,9 +23,9 @@ Route::get('/register', 'AuthController@showFormRegister')->name('register');
 Route::post('/register', 'AuthController@register');
 //  routes that need middleware
 Route::group(['middleware' => 'auth'], function () {
- 
+
     // Route::get('/home', 'ViewShoeController@viewAllShoe')->name('home'); // nanti diganti ke /
-    Route::get('/logout', 'AuthController@logout')->name('logout');
+    Route::get('/logout', 'AuthController@logout');
     // route pada dropdown di sini smua butuh middleware
     // mungkin route nya ga usah dinamain... liat nanti lagi deh
 
