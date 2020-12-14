@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/login_and_register_styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="col-md-4 offset-md-4 mt-5">
-            <div class="card">
+            <div class="card-register">
                 <div class="card-header">
                     <h3 class="text-center">Register</h3>
                 </div>
@@ -31,19 +32,19 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for=""><strong>Full Name</strong></label>
-                        <input type="text" name="name" class="form-control" placeholder="Full Name">
+                        <label for=""><strong>Username</strong></label>
+                        <input type="text" name="name" class="form-control" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <label for=""><strong>Email</strong></label>
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <label for=""><strong>Email Address</strong></label>
+                        <input type="text" name="email" class="form-control" placeholder="Email Address">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for=""><strong>Confirmation Password</strong></label>
+                        <label for=""><strong>Confirm Password</strong></label>
                         <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
                     </div>
                 </div>

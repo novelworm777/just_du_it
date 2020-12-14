@@ -1,0 +1,55 @@
+body{
+    background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    
+}
+
+.card-login{
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 410px;
+    margin: 6rem auto 20rem auto;
+    width: 329px;
+    border: 0px;
+}
+
+     
+.card-register{
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 580px;
+    margin: 6rem auto 8.1rem auto;
+    width: 329px;
+    border: 0px;
+} 
+
+
+.card-header{
+    background-color: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    border: 0px;
+    
+}
+
+.card-body{
+    background-color: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    border: 0px;
+}
+
+button{
+    background: -webkit-linear-gradient(bottom, #206a5d, #206a5d);
+    
+}
+button:hover{
+    background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    box-shadow: 0px 1px 18px #24c64f;
+    color: #206a5d;
+    border: 0px;
+    
+}
+
+p{
+    color: #206a5d;
+    font-family: "Raleway", sans-serif;
+    font-size: 11pt;
+    margin-top: 16px;
+    text-align: center;
+}
