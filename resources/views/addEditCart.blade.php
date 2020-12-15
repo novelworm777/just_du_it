@@ -20,20 +20,22 @@
                 </li>
                 <!-- quantity -->
                 <li class="list-group-item">
-                    <form>
+                    <form action="{{ route('add_cart', ['id' => $shoe->id]) }}" method="POST">
+                        @csrf
                         <h4>Quantity</h4>
-                        <input type="text" class="form-control" placeholder="Input quantity in here..." name="quantity" id="quantity">
-                        <button class="btn btn-success" type="submit" href="/">Submit</button>
+                        <input type="text" class="form-control" placeholder="Input quantity in here..." name="quantity" value="{{ old('quantity') }}" id="quantity">
+                        <button class="btn btn-success" type="submit">Submit</button>
                     </form>
                 </li>
             @elseif ($action == 'update')
-                <!-- price -->
+                <!-- total price -->
                 <li class="list-group-item price">
                     <h4>Rp. {{ number_format($shoe->price) * $qty }}</h4>
                 </li>
                 <!-- quantity -->
                 <li class="list-group-item">
                     <form>
+                        @csrf
                         <h4>Quantity</h4>
                         <input type="text" class="form-control" placeholder="Input quantity in here..." name="quantity" value="{{ Request::input('quantity') }}" id="quantity">
                         <!-- update -->

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Shoe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -31,13 +33,34 @@ class CartController extends Controller
     }
 
     public function addCart(Request $request, $id){
-        $cart = $request->input('quantity');
 
-        DB::table('cart')->insert([
-            'shoe_id'   => $cart->id,
-            'quantity'  => $cart->quantity,
-        ]);
+        $rules = [
+            'quantity' => 'integer',
+        ];
 
-        return redirect('/');
+        $validator = Validator::make($request->all(), $rules);
+
+        // throw message alert if the required inputs are not according to the rules
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+
+        $cart = new Cart;
+        $cart->user_id = Auth::user()->id;
+        $cart->shoe_id = $id;
+        $cart->quantity = $request->input('quantity');
+        $save = $cart->save();
+
+        if($save) return redirect('/');
+        else return redirect()->back();
+    }
+    
+    public function viewCart()
+    {
+        # code...
+    }
+
+    public function editCart(Type $var = null)
+    {
+        # code...
     }
 }

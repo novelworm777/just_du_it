@@ -34,4 +34,4 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/shoe={id}', 'ViewShoeController@viewShoe');
 // add to cart
 Route::get('/shoe={id}/add-to-cart', 'CartController@viewAddCart');
-Route::post('/shoe={id}/add-to-cart', 'CartController@addCart');
+Route::post('/shoe={id}/add-to-cart', 'CartController@addCart')->name('add_cart');
