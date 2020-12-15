@@ -10,7 +10,7 @@
     <!-- show shoes -->
     @foreach ($shoes as $shoe)
         <div class="col-sm-4">
-            <a href="/shoe={{ $shoe->id }}"><img src="assets/{{ $shoe->image }}" class="img-thumbnail" alt="No Image" id="shoe-img"></a>
+            <a href="/shoe={{ $shoe->id }}"><img src="{{ url('/') }}/assets/{{ $shoe->image }}" class="img-thumbnail" alt="No Image" id="shoe-img"></a>
             <div class="caption text-center">
                 <a href="/shoe={{ $shoe->id }}">{{ $shoe->name }}</a>
                 <p>Rp. {{ number_format($shoe->price) }}</p>

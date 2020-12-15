@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 // home or view all shoes
 Route::get('/', 'ViewShoeController@viewAllShoe');
+// view cart
+Route::get('/view-cart', 'CartController@viewCart');
+// checkout
+Route::get('/cart-checkout', 'CartController@checkoutCart');
+
 // login
 Route::get('/login', 'AuthController@showFormLogin')->name('login');
 Route::post('/login', 'AuthController@login');
@@ -30,8 +35,12 @@ Route::group(['middleware' => 'auth'], function () {
     // mungkin route nya ga usah dinamain... liat nanti lagi deh
 
 });
+
 // view shoe
 Route::get('/shoe={id}', 'ViewShoeController@viewShoe');
 // add to cart
-Route::get('/shoe={id}/add-to-cart', 'CartController@viewAddCart');
-Route::post('/shoe={id}/add-to-cart', 'CartController@addCart')->name('add_cart');
+Route::get('/shoe={id}/add-to-cart', 'CartController@viewAddCart')->name('add_cart');
+Route::post('/shoe={id}/add-to-cart', 'CartController@addCart');
+// edit cart
+Route::get('/edit-cart={id}', 'CartController@editCart')->name('edit_cart');
+Route::post('/edit-cart={id}', 'CartController@updateCart');
