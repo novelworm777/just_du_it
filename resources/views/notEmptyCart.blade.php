@@ -19,9 +19,10 @@
     </div>
     <!-- edit -->
     <div class="col-sm-1" id="edit-btn">
-        <a href="/edit-cart={id}" class="btn btn-info" role="button">Edit</a>
+        <a href="/edit-cart={{ $shoe->id }}" class="btn btn-info" role="button">Edit</a>
     </div>
 @endforeach
+<!-- check out -->
 <div class="col-sm-12 centerize">
     <a href="/cart-checkout" class="btn btn-info" role="button">Check Out</a>
 </div>

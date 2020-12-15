@@ -44,3 +44,5 @@ Route::post('/shoe={id}/add-to-cart', 'CartController@addCart');
 // edit cart
 Route::get('/edit-cart={id}', 'CartController@editCart')->name('edit_cart');
 Route::post('/edit-cart={id}', 'CartController@updateCart');
+// delete cart
+Route::get('/delete-cart={id}', 'ViewShoeController@deleteCart');

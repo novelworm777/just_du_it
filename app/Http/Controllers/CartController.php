@@ -32,6 +32,7 @@ class CartController extends Controller
             'username' => $username,
             'shoe' => $shoe,
             'action' => 'add',
+            'cart' => NULL,
         ]);
     }
 
@@ -93,18 +94,18 @@ class CartController extends Controller
         $total_price = Cart::where('user_id', '=', "$user_id")->sum('total_price');
 
         // add header transaction
-        $head = new HeaderTransaction;
-        $head->transaction_date = Carbon::now();
-        $head->total_price = $total_price;
-        $head->user_id = $user_id;
-        $head->save();
+        $header = new HeaderTransaction;
+        $header->transaction_date = Carbon::now();
+        $header->total_price = $total_price;
+        $header->user_id = $user_id;
+        $header->save();
 
         $carts = Cart::where('user_id', '=', "$user_id")->get();
 
         foreach ($carts as $cart){
             // add detail transaction
             $detail = new DetailTransaction;
-            $detail->transaction_id = $head->id;
+            $detail->transaction_id = $header->id;
             $detail->shoe_id = $cart->shoe_id;
             $detail->quantity = $cart->quantity;
             $detail->save();
@@ -112,7 +113,7 @@ class CartController extends Controller
             // delete cart
             $delete_cart = Cart::find($cart->id);
             $delete_cart->delete();
-            
+
         }
 
         return redirect('/');
@@ -120,7 +121,26 @@ class CartController extends Controller
 
     public function editCart($id)
     {
-        # code...
+        $auth = Auth::check();
+
+        $role = 'guest';
+        $username = 'guest';
+        if ($auth){
+            $role = Auth::user()->role;
+            $username = Auth::user()->username;
+        }
+
+        $user_id = Auth::user()->id;
+        $cart = Cart::where('user_id', '=', "$user_id")->first();
+
+        return view('addEditCart', [
+            'auth' => $auth,
+            'role' => $role,
+            'username' => $username,
+            'shoe' => $cart->shoe,
+            'action' => 'add',
+            'cart' => $cart,
+        ]);
     }
 
     public function updateCart(Request $request, $id)
