@@ -30,7 +30,7 @@
             @elseif ($action == 'update')
                 <!-- total price -->
                 <li class="list-group-item price">
-                    <h4>Rp. {{ number_format($shoe->price) * $qty }}</h4>
+                    <h4>Rp. {{ number_format($cart->total_price) }}</h4>
                 </li>
                 <!-- quantity -->
                 <li class="list-group-item">

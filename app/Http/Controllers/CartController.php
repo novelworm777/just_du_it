@@ -32,6 +32,7 @@ class CartController extends Controller
             'username' => $username,
             'shoe' => $shoe,
             'action' => 'add',
+            'cart' => NULL,
         ]);
     }
 
@@ -112,7 +113,7 @@ class CartController extends Controller
             // delete cart
             $delete_cart = Cart::find($cart->id);
             $delete_cart->delete();
-            
+
         }
 
         return redirect('/');
@@ -120,7 +121,26 @@ class CartController extends Controller
 
     public function editCart($id)
     {
-        # code...
+        $auth = Auth::check();
+
+        $role = 'guest';
+        $username = 'guest';
+        if ($auth){
+            $role = Auth::user()->role;
+            $username = Auth::user()->username;
+        }
+
+        $user_id = Auth::user()->id;
+        $cart = Cart::where('user_id', '=', "$user_id")->first();
+
+        return view('addEditCart', [
+            'auth' => $auth,
+            'role' => $role,
+            'username' => $username,
+            'shoe' => $shoe,
+            'action' => 'add',
+            'cart' => $cart,
+        ]);
     }
 
     public function updateCart(Request $request, $id)
