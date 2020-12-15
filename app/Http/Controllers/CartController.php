@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Shoe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -29,7 +30,14 @@ class CartController extends Controller
         ]);
     }
 
-    public function addCart(Request $request){
-        $quantity = $request->input('quantity');
+    public function addCart(Request $request, $id){
+        $cart = $request->input('quantity');
+
+        DB::table('cart')->insert([
+            'shoe_id'   => $cart->id,
+            'quantity'  => $cart->quantity,
+        ]);
+
+        return redirect('/');
     }
 }

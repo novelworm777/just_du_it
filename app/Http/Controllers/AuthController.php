@@ -105,6 +105,9 @@ class AuthController extends Controller
  
     public function logout()
     {
+        // drop temp table
+        Schema::dropIfExists('cart');
+        
         Auth::logout(); // menghapus session yang aktif
         return redirect('/');
     }
