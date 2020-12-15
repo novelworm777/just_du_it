@@ -27,21 +27,21 @@
                         <button class="btn btn-success" type="submit">Submit</button>
                     </form>
                 </li>
-            @elseif ($action == 'update')
+            @elseif ($action == 'edit')
                 <!-- total price -->
                 <li class="list-group-item price">
                     <h4>Rp. {{ number_format($cart->total_price) }}</h4>
                 </li>
                 <!-- quantity -->
                 <li class="list-group-item">
-                    <form>
+                    <form action="{{ route('edit_cart', ['id' => $cart->id]) }}" method="POST">
                         @csrf
                         <h4>Quantity</h4>
-                        <input type="text" class="form-control" placeholder="Input quantity in here..." name="quantity" value="{{ Request::input('quantity') }}" id="quantity">
+                        <input type="text" class="form-control" placeholder="Input quantity in here..." name="quantity" value="{{ $cart->quantity }}" id="quantity">
                         <!-- update -->
-                        <button class="btn btn-success" type="submit" href="/">Update</button>
+                        <button class="btn btn-success" type="submit" href="/" id="update-btn">Update</button>
                         <!-- delete -->
-                        <button class="btn btn-success" type="submit" href="/">Delete</button>
+                        <a href="/delete-cart={{ $cart->id }}" class="btn btn-success" role="button">Delete</a>
                     </form>
                 </li>
             @endif

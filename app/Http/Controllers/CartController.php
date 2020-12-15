@@ -130,36 +130,52 @@ class CartController extends Controller
             $username = Auth::user()->username;
         }
 
-        $user_id = Auth::user()->id;
-        $cart = Cart::where('user_id', '=', "$user_id")->first();
+        $cart = Cart::where('id', '=', "$id")->first();
 
         return view('addEditCart', [
             'auth' => $auth,
             'role' => $role,
             'username' => $username,
             'shoe' => $cart->shoe,
-            'action' => 'add',
+            'action' => 'edit',
             'cart' => $cart,
         ]);
     }
 
     public function updateCart(Request $request, $id)
     {
-        # code...
+        // merge $request and $id
+        $request->merge(['id' => $id]);
+
+        // validate using rule
+        $this->validate($request, ['id' => 'required|integer']);
+
+        // update quantity and total price
+        $cart = Cart::find($id);
+        $cart->quantity = $request->input('quantity');
+        $cart->total_price = $cart->shoe->price * $request->input('quantity');
+        $save = $cart->save();
+
+        if($save) return redirect('/view-cart');
+        else return redirect()->back();
     }
 
     public function deleteCart($id)
     {
         $validator = Validator::make(
             ['id' => $id],
-            ['id' => 'required|integer|exists:students, id'],
+            ['id' => 'required|integer'],
         );
 
         // throw message alert if the required inputs are not according to the rules
         if($validator->fails())
             return redirect()->back()->withErrors($validator->errors());
         
+        // find cart by id
         $cart = Cart::find($id);
+        // delete cart from database
         $cart->delete();
+
+        return redirect('/view-cart');
     }
 }

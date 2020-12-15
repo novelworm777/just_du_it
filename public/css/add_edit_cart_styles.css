@@ -34,3 +34,12 @@ form{
     background-color: #81b214;
     border-color: #81b214;
 }
+
+#update-btn{
+    margin-right: 7px;
+}
+
+.list-group-item form a, .list-group-item form a:hover{
+    background-color: #81b214;
+    border-color: #81b214;
+}
