@@ -7,7 +7,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -50,7 +52,7 @@ class AuthController extends Controller
  
         // check whether there is the user inside database
         $result = Auth::attempt($data);
- 
+
         if ($result){ 
             // login success
             
@@ -108,10 +110,11 @@ class AuthController extends Controller
     }
  
     public function logout()
-    {
-        Auth::logout(); // delete session its active
+    {   
+        Auth::logout(); // menghapus session yang aktif
         return redirect('/');
     }
+
     
     public function checklogin(Request $request)
     {
@@ -125,5 +128,8 @@ class AuthController extends Controller
 
         return redirect()->back();
     }
+
+
+ 
 
 }

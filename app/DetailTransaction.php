@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetailTransaction extends Model
 {
+    protected $table = 'detail_transactions';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'transaction_id', 'shoe_id', 'quantity',
+    ];
+
     public function shoe(){
         return $this->belongsTo(Shoe::class);
     }

@@ -46,7 +46,7 @@
                             </div>
                         </li>
                         <!-- logo -->
-                        <li><img src="assets/logo.png" alt="no image" class="navbar-brand"></li>
+                        <li><img src="{{ url('/') }}/assets/logo.png" alt="no image" class="navbar-brand"></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li id="search-bar">

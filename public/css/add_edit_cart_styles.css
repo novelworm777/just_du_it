@@ -1,0 +1,45 @@
+div .row{
+    margin-left: -98px;
+    margin-right: -98px;
+}
+
+.page-header{
+    text-align: center;
+    font-family: 'Times New Roman';
+    color: #206a5d;
+}
+
+#shoe-img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+form{
+    margin-bottom: 10px;
+}
+
+.list-group .price{
+    background-color: #81b214;
+    border-color: #bfdcae;
+    color: #f1f1e8;
+}
+
+#quantity{
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.list-group-item form button, .list-group-item form button:hover{
+    background-color: #81b214;
+    border-color: #81b214;
+}
+
+#update-btn{
+    margin-right: 7px;
+}
+
+.list-group-item form a, .list-group-item form a:hover{
+    background-color: #81b214;
+    border-color: #81b214;
+}
