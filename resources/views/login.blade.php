@@ -52,7 +52,7 @@
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" name="remember">Remember Me
+                        <input type="checkbox" name="remember" id="remember">Remember Me
                     </div>
                 </div>
                 <div class="card-footer">

@@ -1,17 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
- 
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class AuthController extends Controller
 {
@@ -19,7 +16,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) { 
             // login success
-            return redirect()->route('/');
+            return redirect('/');
         }
         return view('login'); // login failed
     }
@@ -38,7 +35,7 @@ class AuthController extends Controller
             'password.required'     => 'Password must be filled',
             'password.string'       => 'Password must be string'
         ];
- 
+
         $validator = Validator::make($request->all(), $rules, $messages);
  
         // throw message alert if the required inputs are not according to the rules
@@ -54,11 +51,15 @@ class AuthController extends Controller
         // check whether there is the user inside database
         $result = Auth::attempt($data);
 
-        if ($result){ 
-            // login success
-            $response = new Response('/');
-            $response->withCookie(cookie('test', [Auth::user()->name, $request->password], 120));
-            return $response;
+        if ($result){ // login success
+
+            // set cookies if remember me
+            if ($request->remember){
+                return redirect('/')->withCookie(cookie('name', Auth::user()->name, 120))
+                    ->withCookie(cookie('password', $request->password, 120));
+            }
+            else return redirect('/');
+            
         }
         else return redirect()->back(); // login failed
         
@@ -110,5 +111,5 @@ class AuthController extends Controller
         Auth::logout(); // menghapus session yang aktif
         return redirect('/');
     }
- 
+
 }
