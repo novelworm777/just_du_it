@@ -1,0 +1,32 @@
+div .row{
+    margin-left: -98px;
+    margin-right: -98px;
+}
+
+.page-header{
+    text-align: center;
+    font-family: 'Times New Roman';
+    color: #206a5d;
+}
+
+#shoe-img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.list-group li{
+    background-color: #81b214;
+    border-color: #bfdcae;
+    color: #f1f1e8;
+}
+
+#description{
+    background-color: #206a5d;
+}
+
+.list-group-item a, .list-group-item a:hover{
+    text-decoration: none;
+    color: #f1f1e8;
+    font-size: 17px;
+}
