@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
- 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Contracts\Session\Session;
@@ -37,7 +37,7 @@ class AuthController extends Controller
             'password.required'     => 'Password must be filled',
             'password.string'       => 'Password must be string'
         ];
- 
+
         $validator = Validator::make($request->all(), $rules, $messages);
  
         // throw message alert if the required inputs are not according to the rules
@@ -55,6 +55,12 @@ class AuthController extends Controller
 
         if ($result){ 
             // login success
+            
+            $minutes = 120;
+            $response = new Response('/');
+            $response->withCookie(cookie('name', 'virat', $minutes));
+            
+
             $request->session()->keep(['email']); // keep email data
             return redirect('/');
         }
@@ -108,5 +114,22 @@ class AuthController extends Controller
         Auth::logout(); // menghapus session yang aktif
         return redirect('/');
     }
+
+    
+    public function checklogin(Request $request)
+    {
+        $rmb = $request->remember ? true : false;
+
+        $up = $request->only('email','password');
+
+        if(Auth::attempt($rmb,$up)){
+            return redirect()->route('member.index');
+        }
+
+        return redirect()->back();
+    }
+
+
  
+
 }

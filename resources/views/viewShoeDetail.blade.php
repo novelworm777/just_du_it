@@ -9,7 +9,11 @@
     </div>
     <!-- image -->
     <div class="col-sm-4">
+<<<<<<< HEAD
+        <img src="assets/{{ $shoe->image }}" class="img-thumbnail" alt="No Image" id="shoe-img">
+=======
         <img src="{{ url('/') }}/assets/{{ $shoe->image }}" class="img-thumbnail" alt="No Image" id="shoe-img">
+>>>>>>> 62e3a763170ca9af8a2b9fb6a502105ad6ef7e63
     </div>
     <div class="col-sm-8">
         <ul class="list-group">
