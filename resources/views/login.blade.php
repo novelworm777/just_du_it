@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/login_and_register_styles.css') }}" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container">
         <div class="col-md-4 offset-md-4 mt-5">
-            <div class="card">
+            <div class="card-login">
                 <div class="card-header">
                     <h3 class="text-center">Login</h3>
                 </div>
@@ -49,6 +50,9 @@
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="remember">Remember Me
                     </div>
                 </div>
                 <div class="card-footer">

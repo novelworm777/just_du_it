@@ -17,7 +17,7 @@ class AuthController extends Controller
 {
     public function showFormLogin()
     {
-        if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
+        if (Auth::check()) { 
             // login success
             return redirect()->route('/');
         }
@@ -53,7 +53,7 @@ class AuthController extends Controller
  
         // check whether there is the user inside database
         $result = Auth::attempt($data);
-        
+
         if ($result){ 
             // login success
             $response = new Response('/');
@@ -110,6 +110,5 @@ class AuthController extends Controller
         Auth::logout(); // menghapus session yang aktif
         return redirect('/');
     }
- 
  
 }

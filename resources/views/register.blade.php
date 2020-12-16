@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/login_and_register_styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="col-md-4 offset-md-4 mt-5">
-            <div class="card">
+            <div class="card-register">
                 <div class="card-header">
                     <h3 class="text-center">Register</h3>
                 </div>
