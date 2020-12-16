@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -55,8 +56,9 @@ class AuthController extends Controller
         
         if ($result){ 
             // login success
-            $request->session()->keep(['email']); // keep email data
-            return redirect('/');
+            $response = new Response('/');
+            $response->withCookie(cookie('test', [Auth::user()->name, $request->password], 120));
+            return $response;
         }
         else return redirect()->back(); // login failed
         
