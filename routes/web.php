@@ -20,6 +20,13 @@ Route::get('/view-cart', 'CartController@viewCart');
 // checkout
 Route::get('/cart-checkout', 'CartController@checkoutCart');
 
+//View All Transaction(admin)
+Route::get('/view-all-transaction', 'ViewAllTransactionController@viewAllUserTransaction');
+//View All Transaction(member)
+Route::get('/view-transaction', 'ViewAllTransactionController@viewUserTransaction');
+
+
+
 // login
 Route::get('/login', 'AuthController@showFormLogin')->name('login');
 Route::post('/login', 'AuthController@login');
@@ -46,3 +53,5 @@ Route::get('/edit-cart={id}', 'CartController@editCart')->name('edit_cart');
 Route::post('/edit-cart={id}', 'CartController@updateCart');
 // delete cart
 Route::get('/delete-cart={id}', 'CartController@deleteCart');
+
+

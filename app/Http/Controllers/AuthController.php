@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class AuthController extends Controller
 {
@@ -18,7 +16,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) { 
             // login success
-            return redirect()->route('/');
+            return redirect('/');
         }
         return view('login'); // login failed
     }
@@ -53,16 +51,15 @@ class AuthController extends Controller
         // check whether there is the user inside database
         $result = Auth::attempt($data);
 
-        if ($result){ 
-            // login success
-            
-            $minutes = 120;
-            $response = new Response('/');
-            $response->withCookie(cookie('name', 'virat', $minutes));
-            
+        if ($result){ // login success
 
-            $request->session()->keep(['email']); // keep email data
-            return redirect('/');
+            // set cookies if remember me
+            if ($request->remember){
+                return redirect('/')->withCookie(cookie('name', Auth::user()->name, 120))
+                    ->withCookie(cookie('password', $request->password, 120));
+            }
+            else return redirect('/');
+            
         }
         else return redirect()->back(); // login failed
         
@@ -114,22 +111,5 @@ class AuthController extends Controller
         Auth::logout(); // menghapus session yang aktif
         return redirect('/');
     }
-
-    
-    public function checklogin(Request $request)
-    {
-        $rmb = $request->remember ? true : false;
-
-        $up = $request->only('email','password');
-
-        if(Auth::attempt($rmb,$up)){
-            return redirect()->route('member.index');
-        }
-
-        return redirect()->back();
-    }
-
-
- 
 
 }

@@ -17,6 +17,15 @@ div .row{
     margin-bottom: 17px;
 }
 
+.col-sm-3{
+    margin-top: 55px;
+    text-align: initial;
+    font-family: 'Times New Roman';
+    font-size: larger;
+}
+
+
+
 .row h4{
     height: 130px;
     display: table-cell;
@@ -57,4 +66,9 @@ div .row{
     width: 50%;
     height: 50%;
     object-fit: cover;
+}
+
+.table_transaction{
+    border-radius: 1000px;
+    border: 5px;
 }
