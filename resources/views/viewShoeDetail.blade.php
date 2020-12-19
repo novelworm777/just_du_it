@@ -30,7 +30,7 @@
             @elseif ($role == 'admin')
                 <!-- update shoe -->
                 <li class="list-group-item">
-                    <a href="/shoe={{ $shoe->id }}/update-shoe">Update Shoe</a>
+                    <a href="/shoe={{ $shoe->id }}/edit-shoe">Update Shoe</a>
                 </li>
             @endif
         </ul>

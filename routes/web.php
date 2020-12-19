@@ -46,3 +46,10 @@ Route::get('/edit-cart={id}', 'CartController@editCart')->name('edit_cart');
 Route::post('/edit-cart={id}', 'CartController@updateCart');
 // delete cart
 Route::get('/delete-cart={id}', 'CartController@deleteCart');
+
+// add shoe
+Route::get('/add-shoe', 'ShoeController@showAddShoe')->name('add_shoe');
+Route::post('/add-shoe', 'ShoeController@addShoe');
+// update shoe
+Route::get('/shoe={id}/edit-shoe', 'ShoeController@editShoe')->name('edit_shoe');
+Route::post('/shoe={id}/edit-shoe', 'ShoeController@updateShoe');
