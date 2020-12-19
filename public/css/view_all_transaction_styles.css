@@ -1,0 +1,74 @@
+div .row{
+    margin-left: -98px;
+    margin-right: -98px;
+}
+
+.page-header{
+    text-align: center;
+    font-family: 'Times New Roman';
+    color: #206a5d;
+}
+
+.row .centerize{
+    text-align: center;
+}
+
+.col-sm-1, .col-sm-2, .col-sm-6{
+    margin-bottom: 17px;
+}
+
+.col-sm-3{
+    margin-top: 55px;
+    text-align: initial;
+    font-family: 'Times New Roman';
+    font-size: larger;
+}
+
+
+
+.row h4{
+    height: 130px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#shoe-img{
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+}
+
+#edit-btn {
+    height: 130px;
+    padding-top: 47px;
+}
+
+.col-sm-1 a, .col-sm-1 a:hover{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 7px 13px 7px 13px;
+    background-color: #81b214;
+    border-color: #81b214;
+}
+
+.col-sm-12 a, .col-sm-12 a:hover{
+    margin-top: 37px;
+    margin-bottom: 42px;
+    background-color: #81b214;
+    border-color: #81b214;
+}
+
+#empty{
+    text-align: center;
+}
+
+#empty img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.table_transaction{
+    border-radius: 1000px;
+    border: 5px;
+}
