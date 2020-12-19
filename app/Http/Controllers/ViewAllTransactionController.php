@@ -27,6 +27,7 @@ class ViewAllTransactionController extends Controller
         
         $headers = HeaderTransaction::all();
         $details = DetailTransaction::all();
+        
         if(!$headers->isEmpty()) return view('notEmptyViewAllTransaction',[
             'auth' => $auth,
             'role' => $role,

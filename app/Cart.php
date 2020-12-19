@@ -15,6 +15,6 @@ class Cart extends Model
     ];
 
     public function shoe(){
-        return $this->belongsTo(Shoe::class, 'shoe_id');
+        return $this->hasOne(Shoe::class, 'shoe_id');
     }
 }
