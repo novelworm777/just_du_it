@@ -64,7 +64,7 @@
                             <li>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-link dropdown-toggle nav-username" aria-label="Left Align" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                       welcome, {{ $username }}
+                                       Welcome, {{ $username }}
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ url('/logout') }}" id="logout">Logout</a></li>
