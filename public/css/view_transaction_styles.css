@@ -1,0 +1,50 @@
+.container{
+    margin-bottom: 37px;
+}
+
+div .row{
+    margin-left: -98px;
+    margin-right: -98px;
+}
+
+.page-header{
+    text-align: center;
+    font-family: 'Times New Roman';
+    color: #206a5d;
+}
+
+#empty{
+    text-align: center;
+}
+
+#empty img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.row .centerize{
+    text-align: center;
+}
+
+.col-sm-12 a, .col-sm-12 a:hover{
+    margin-top: 37px;
+    margin-bottom: 42px;
+    background-color: #81b214;
+    border-color: #81b214;
+}
+
+.transaction-header{
+    font-family: 'Times New Roman';
+}
+
+.col-sm-2{
+    margin-bottom: 17px;
+}
+
+#shoe-img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+

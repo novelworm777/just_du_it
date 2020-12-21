@@ -19,6 +19,6 @@ class DetailTransaction extends Model
     }
 
     public function header_transaction(){
-        return $this->belongsTo(HeaderTransaction::class);
+        return $this->belongsTo(HeaderTransaction::class, 'transaction_id');
     }
 }

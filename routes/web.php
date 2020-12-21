@@ -19,11 +19,10 @@ Route::get('/', 'ViewShoeController@viewAllShoe');
 Route::get('/view-cart', 'CartController@viewCart');
 // checkout
 Route::get('/cart-checkout', 'CartController@checkoutCart');
-
-//View All Transaction(admin)
-Route::get('/view-all-transaction', 'ViewAllTransactionController@viewAllUserTransaction');
-//View All Transaction(member)
-Route::get('/view-transaction', 'ViewAllTransactionController@viewUserTransaction');
+// view all transaction (admin)
+Route::get('/view-all-transaction', 'viewTransactionController@viewAllTransaction');
+// view transaction (member)
+Route::get('/view-transaction', 'viewTransactionController@viewMemberTransaction');
 
 
 

@@ -1,5 +1,5 @@
-@extends('viewAllTransaction')
-@section('alltransaction-body')
+@extends('viewTransaction')
+@section('transaction-body')
 <div class="col-sm-12" id="empty">
     <img src="{{ url('/') }}/assets/404.gif" alt="no image">
 </div>

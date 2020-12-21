@@ -95,7 +95,7 @@ class CartController extends Controller
 
         // add header transaction
         $header = new HeaderTransaction;
-        $header->transaction_date = Carbon::now();
+        $header->transaction_date = Carbon::now('Asia/Jakarta');
         $header->total_price = $total_price;
         $header->user_id = $user_id;
         $header->save();
