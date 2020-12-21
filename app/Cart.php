@@ -15,6 +15,10 @@ class Cart extends Model
     ];
 
     public function shoe(){
+<<<<<<< HEAD
         return $this->hasOne(Shoe::class, 'id', 'shoe_id');
+=======
+        return $this->hasOne(Shoe::class, 'shoe_id');
+>>>>>>> d5e0560182aa91ca82eba4d064f716f68f467b66
     }
 }

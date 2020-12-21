@@ -103,7 +103,7 @@ class CartController extends Controller
         $carts = Cart::where('user_id', '=', "$user_id")->get();
 
         foreach ($carts as $cart){
-            // add detail transaction
+            // add detail transaction from Cart
             $detail = new DetailTransaction;
             $detail->transaction_id = $header->id;
             $detail->shoe_id = $cart->shoe_id;
