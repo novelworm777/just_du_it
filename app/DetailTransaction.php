@@ -15,14 +15,10 @@ class DetailTransaction extends Model
     ];
 
     public function shoe(){
-<<<<<<< HEAD
         return $this->hasOne(Shoe::class, 'id', 'shoe_id');
-=======
-        return $this->hasOne(Shoe::class);
     }
 
     public function header_transaction(){
         return $this->belongsTo(HeaderTransaction::class);
->>>>>>> d5e0560182aa91ca82eba4d064f716f68f467b66
     }
 }
